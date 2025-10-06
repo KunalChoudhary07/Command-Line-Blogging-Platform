@@ -126,11 +126,12 @@ git clone [https://github.com/KunalChoudhary07/Command-Line-Interface-Blogging-P
 cd Command-Line-Interface-Blogging-Platform
 ```
 3. Set Up the Database
-   1. Start the MySQL service from your XAMPP Control Panel.
+   1. Start the _**MySQL**_ service from your XAMPP Control Panel.
    2. Navigate to http://localhost/phpmyadmin.
-   3. Create a new database named blog_db.
-   4. Select blog_db and go to the SQL tab.
-   5. Execute the script provided in schema.sql to create all the tables._
+   3. If the localhost is not working than start _Apache_ service from your XAMPP Control Panel.
+   4. Create a new database named _**blog_db**_.
+   5. Select _**blog_db**_ and go to the SQL tab.
+   6. Execute the script provided in schema.sql to create all the tables._
     - Note: The full SQL script can be found in a schema.sql file in the repository.
 4. Install Dependencies
 - Using a virtual environment is highly recommended and in this we have created a new Virtual environment.
@@ -156,11 +157,11 @@ project_code.py
 ## 🔮 Future Improvements
 
 - This project has a solid foundation that can be extended with many exciting features:
-- Web Frontend: Build a web-based API using Flask or Django and connect it to a modern frontend framework like React or Vue.js.
-- Post Search: Implement a search functionality to find posts by title or content.
-- Full User Profiles: Allow users to write and edit a personal bio.
-- Advanced Security: Upgrade password hashing from sha256 to a stronger, salted algorithm using a library like bcrypt.
-- Comment Moderation: Fully implement the pending status for comments, allowing authors to approve or deny them.
+     - **Web Frontend**: Build a web-based API using Flask or Django and connect it to a modern frontend framework like React or Vue.js.
+     - **Post Search**: Implement a search functionality to find posts by title or content.
+     - **Full User Profiles**: Allow users to write and edit a personal bio.
+     - **Advanced Security**: Upgrade password hashing from sha256 to a stronger, salted algorithm using a library like bcrypt.
+     - **Comment Moderation**: Fully implement the pending status for comments, allowing authors to approve or deny them.
 
 ---
 
