@@ -3,10 +3,11 @@ import hashlib
 import getpass # For securely typing passwords
 
 # --- DATABASE CONFIGURATION ---
+# This dictionary holds the credentials for our database connection.
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': '',
+    'password': '', # Change if you have a password
     'database': 'blog_db'
 }
 
@@ -376,3 +377,4 @@ def start_screen():
 if __name__ == "__main__":
 
     start_screen()
+
