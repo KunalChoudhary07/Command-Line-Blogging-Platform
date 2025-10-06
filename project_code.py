@@ -133,7 +133,7 @@ def edit_post():
             cursor.execute("UPDATE posts SET content = %s WHERE post_id = %s", (new_content, post_id))
         
         conn.commit()
-        print("✅ Post updated successfully!")
+        print("Post updated successfully!")
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
@@ -166,7 +166,7 @@ def delete_post():
 
         cursor.execute("DELETE FROM posts WHERE post_id = %s", (post_id,))
         conn.commit()
-        print("✅ Post deleted successfully!")
+        print("Post deleted successfully!")
     except mysql.connector.Error as err:
         print(f"Error: {err}")
     finally:
@@ -374,4 +374,5 @@ def start_screen():
 
 # --- START THE APPLICATION ---
 if __name__ == "__main__":
+
     start_screen()
