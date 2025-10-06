@@ -1,0 +1,49 @@
+-- Create the 'users' table with a password field
+CREATE TABLE `users` (
+  `user_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `username` VARCHAR(50) NOT NULL UNIQUE,
+  `password_hash` VARCHAR(255) NOT NULL,
+  `profile_bio` TEXT,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create the 'posts' table
+CREATE TABLE `posts` (
+  `post_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `author_id` INT NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `content` TEXT NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (`author_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
+);
+
+-- Create the 'comments' table with a status for moderation
+CREATE TABLE `comments` (
+  `comment_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `post_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `comment_text` TEXT NOT NULL,
+  `status` ENUM('approved', 'pending') DEFAULT 'approved',
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`post_id`) REFERENCES `posts`(`post_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
+);
+
+-- Create the 'categories' table to store tags/categories
+CREATE TABLE `categories` (
+  `category_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `category_name` VARCHAR(50) NOT NULL UNIQUE
+);
+
+-- Create a junction table to link posts and categories
+CREATE TABLE `post_categories` (
+  `post_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
+  PRIMARY KEY (`post_id`, `category_id`),
+  FOREIGN KEY (`post_id`) REFERENCES `posts`(`post_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`category_id`) REFERENCES `categories`(`category_id`) ON DELETE CASCADE
+);
+
+-- Insert some default categories to get started
+INSERT INTO `categories` (`category_name`) VALUES ('Technology'), ('Travel'), ('Lifestyle'), ('Programming');
